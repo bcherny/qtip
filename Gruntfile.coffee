@@ -30,7 +30,7 @@ module.exports = (grunt) ->
 			all: {}
 
 	# configure coffee, uglify, umd
-	config.coffee.compile.files[name + '.js'] = name + '.coffee'
+	config.coffee.compile.files[name + '.js'] = name + '.coffee.md'
 	config.uglify.standard.files[name + '.min.js'] = [name + '.js']
 	config.umd.all =
 		src: name + '.js'
@@ -39,7 +39,6 @@ module.exports = (grunt) ->
 		globalAlias: name
 		deps:
 			default: deps or []
-		template: 'grunt-umd-template.hbs'
 
 	# load config
 	grunt.config.init config
