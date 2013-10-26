@@ -1,0 +1,30 @@
+{
+  "name": "qtip",
+  "version": "0.0.0",
+  "description": "pretty, mobile-friendly tooltips",
+  "main": "qtip.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:eighttrackmind/qtip.git"
+  },
+  "keywords": [
+    "tooltip",
+    "popup",
+    "tip",
+    "help",
+    "hover",
+    "ios",
+    "android",
+    "mobile",
+    "interface",
+    "ui"
+  ],
+  "author": "Boris Cherny <boris@performancejs.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eighttrackmind/qtip/issues"
+  }
+}
