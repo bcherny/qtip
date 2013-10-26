@@ -1,7 +1,26 @@
 #qtip {
   background: rgba(255,255,255,0.7);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   color: #000;
   display: block;
-  padding: 5px 7px;
+  opacity: 0;
+  padding: 10px 14px;
   position: absolute;
+  -webkit-transform: scale(0.8);
+  -webkit-transition: 0.2s linear;
+  -webkit-transition-property: opacity, -webkit-transform;
+}
+#qtip.visible {
+  opacity: 1;
+  -webkit-transform: scale(1);
+}
+#qtip:before {
+  border: 10px solid transparent;
+  border-bottom-color: rgba(255,255,255,0.7);
+  content: "";
+  margin-top: 5px;
+  margin-left: -10px;
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
 }

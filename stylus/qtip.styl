@@ -1,6 +1,31 @@
+
+$arrow = 10px
+$background = rgba(255,255,255,.7)
+$color = #000
+
 #qtip
-	background rgba(255,255,255,.7)
-	color #000
+	background $background
+	box-shadow 0 1px 1px rgba(0,0,0,.1)
+	color $color
 	display block
-	padding 5px 7px
+	opacity 0
+	padding 10px 14px
 	position absolute
+	-webkit-transform scale(.8)
+	-webkit-transition .2s linear
+	-webkit-transition-property opacity, -webkit-transform
+
+	&.visible
+		opacity 1
+		-webkit-transform scale(1)
+
+	// arrow
+	&:before
+		border $arrow solid transparent
+		border-bottom-color $background
+		content ""
+		margin-top ($arrow/2)
+		margin-left -($arrow)
+		position absolute
+		left 50%
+		bottom 100%

@@ -10,14 +10,20 @@
 hover event
 
 			elements = document.querySelectorAll '[title][data-qtip]'
-			elements.addEventListener 'mousedown', show
-			elements.addEventListener 'mouseup', hide
+
+			for element in elements
+
+				element.addEventListener 'touchstart', show
+				element.addEventListener 'touchend', hide
+
+				element.addEventListener 'mousedown', show
+				element.addEventListener 'mouseup', hide
 
 create qtip div
 
 			div = document.createElement 'div'
 			div.id = 'qtip'
-			document.appendChild div
+			document.body.appendChild div
 
 ## hide
 
@@ -28,6 +34,8 @@ create qtip div
 ## show
 
 		show = (event) ->
+
+			event.preventDefault()
 
 			element = event.target
 
@@ -43,7 +51,7 @@ position it
 
 			div.style.cssText = """
 				left: #{offset.left}px;
-				top: #{offset.top}px;
+				top: #{offset.top + element.offsetHeight}px;
 			"""
 
 show it

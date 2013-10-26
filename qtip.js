@@ -6,23 +6,29 @@
     var div, hide, initialize, show;
     div = null;
     initialize = function() {
-      var elements;
+      var element, elements, _i, _len;
       elements = document.querySelectorAll('[title][data-qtip]');
-      elements.addEventListener('mousedown', show);
-      elements.addEventListener('mouseup', hide);
+      for (_i = 0, _len = elements.length; _i < _len; _i++) {
+        element = elements[_i];
+        element.addEventListener('touchstart', show);
+        element.addEventListener('touchend', hide);
+        element.addEventListener('mousedown', show);
+        element.addEventListener('mouseup', hide);
+      }
       div = document.createElement('div');
       div.id = 'qtip';
-      return document.appendChild(div);
+      return document.body.appendChild(div);
     };
     hide = function(event) {
       return div.classList.remove('visible');
     };
     show = function(event) {
       var element, offset;
+      event.preventDefault();
       element = event.target;
       offset = element.getBoundingClientRect();
       div.innerHTML = element.getAttribute('title');
-      div.style.cssText = "left: " + offset.left + "px;\ntop: " + offset.top + "px;";
+      div.style.cssText = "left: " + offset.left + "px;\ntop: " + (offset.top + element.offsetHeight) + "px;";
       return div.classList.add('visible');
     };
     return initialize();
