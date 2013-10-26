@@ -6,13 +6,12 @@
   opacity: 0;
   padding: 10px 14px;
   position: absolute;
-  -webkit-transform: scale(0.8);
   -webkit-transition: 0.2s linear;
   -webkit-transition-property: opacity, -webkit-transform;
 }
 #qtip.visible {
   opacity: 1;
-  -webkit-transform: scale(1);
+  -webkit-animation: Grow 0.3s;
 }
 #qtip:before {
   border: 10px solid transparent;
@@ -23,4 +22,21 @@
   position: absolute;
   left: 50%;
   bottom: 100%;
+}
+@-webkit-keyframes Grow {
+  0% {
+    -webkit-transform: scale(0.7);
+  }
+
+  40% {
+    -webkit-transform: scale(1.2);
+  }
+
+  70% {
+    -webkit-transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+  }
 }

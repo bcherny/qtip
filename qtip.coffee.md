@@ -49,9 +49,12 @@ set the qtip's text
 
 position it
 
+			left = offset.left + (element.offsetWidth - div.offsetWidth)/2
+			top = offset.top + element.offsetHeight
+
 			div.style.cssText = """
-				left: #{offset.left}px;
-				top: #{offset.top + element.offsetHeight}px;
+				left: #{left}px;
+				top: #{top}px;
 			"""
 
 show it

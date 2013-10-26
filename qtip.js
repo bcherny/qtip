@@ -23,12 +23,14 @@
       return div.classList.remove('visible');
     };
     show = function(event) {
-      var element, offset;
+      var element, left, offset, top;
       event.preventDefault();
       element = event.target;
       offset = element.getBoundingClientRect();
       div.innerHTML = element.getAttribute('title');
-      div.style.cssText = "left: " + offset.left + "px;\ntop: " + (offset.top + element.offsetHeight) + "px;";
+      left = offset.left + (element.offsetWidth - div.offsetWidth) / 2;
+      top = offset.top + element.offsetHeight;
+      div.style.cssText = "left: " + left + "px;\ntop: " + top + "px;";
       return div.classList.add('visible');
     };
     return initialize();

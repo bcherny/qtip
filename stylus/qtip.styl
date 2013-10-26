@@ -11,13 +11,12 @@ $color = #000
 	opacity 0
 	padding 10px 14px
 	position absolute
-	-webkit-transform scale(.8)
 	-webkit-transition .2s linear
 	-webkit-transition-property opacity, -webkit-transform
 
 	&.visible
 		opacity 1
-		-webkit-transform scale(1)
+		-webkit-animation Grow .3s
 
 	// arrow
 	&:before
@@ -29,3 +28,17 @@ $color = #000
 		position absolute
 		left 50%
 		bottom 100%
+
+@-webkit-keyframes Grow
+
+	0%
+		-webkit-transform scale(.7)
+
+	40%
+		-webkit-transform scale(1.2)
+
+	70%
+		-webkit-transform scale(.9)
+
+	100%
+		-webkit-transform scale(1)
