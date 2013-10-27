@@ -1,3 +1,4 @@
+# qtip
 
 	qtip = do ->
 

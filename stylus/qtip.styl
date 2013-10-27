@@ -1,31 +1,16 @@
 
 $arrow = 10px
-$background = #fff
-$color = #000
-$shadow-color = rgba(0,0,0,.1)
-$shadow = 0 1px 1px $shadow-color
 
 #qtip
-	background $background
-	box-shadow $shadow
-	color $color
-	display block
-	font-size 18px
+	display none
 	margin-bottom 15px
-	opacity 0
-	padding 10px 14px
 	position absolute
-	-webkit-transition .2s linear
-	-webkit-transition-property opacity, -webkit-transform
 
 	&.visible
-		opacity 1
-		-webkit-animation Grow .3s
+		display block
 
 	// arrow
 	&:before
-		color $background
-		text-shadow $shadow
 		content "\25be"
 		font-size $arrow*3
 		line-height 2px
@@ -34,16 +19,4 @@ $shadow = 0 1px 1px $shadow-color
 		left 50%
 		top 100%
 
-@-webkit-keyframes Grow
-
-	0%
-		-webkit-transform scale(.7)
-
-	40%
-		-webkit-transform scale(1.2)
-
-	70%
-		-webkit-transform scale(.9)
-
-	100%
-		-webkit-transform scale(1)
+@import "theme.styl"
