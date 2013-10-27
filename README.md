@@ -11,14 +11,14 @@ http://performancejs.com/qtip/demo/
 
 ## features
 
-- tiny (0.5k gzipped)
-- pretty
+- tiny (.5k gzipped), no dependencies
+- pretty, stylable via CSS
 - semantic (augments existing `title` attributes), uses CSS for styling
 - supported environments: AMD, CommonJS, browser globals
 
 ## usage
 
-installation is nearly drop-in. just add empty `data-qtip` attributes to any elements with existing `title` attributes that you'd like to style. then attach `qtip.js` to the bottom of your page (it will initialize itself)
+installation is nearly drop-in. just add empty `data-qtip` attributes to any elements with existing `title` attributes that you'd like to style. then attach `qtip.js` to the bottom of your page (it will self-initialize).
 
 ```html
 <html>
@@ -42,12 +42,13 @@ installation is nearly drop-in. just add empty `data-qtip` attributes to any ele
 ## building it yourself
 
 ```bash
-# css
-npm install -g stylus
+# install build dependencies
+npm install
+
+# build css
 stylus stylus --out css
 
-# js
-npm install
+# build js
 grunt
 ```
 
