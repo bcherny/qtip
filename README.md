@@ -3,9 +3,15 @@ qtip
 
 pretty, mobile-friendly tooltips.
 
-# features
+![screenshot](http://i.imgur.com/z0KmBrE.png)
 
-- tiny
+## demo
+
+http://performancejs.com/qtip/demo/
+
+## features
+
+- tiny (0.5k gzipped)
 - pretty
 - semantic (augments existing `title` attributes), uses CSS for styling
 - supported environments: AMD, CommonJS, browser globals
