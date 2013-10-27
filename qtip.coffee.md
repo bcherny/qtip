@@ -3,18 +3,27 @@
 
 		div = null
 
+		options =
+			dataAttribute: 'data-qtip'
+			id: 'qtip'
+			visibleClass: 'visible'
+
 ## initialize
 
 		initialize = ->
 
-hover event
+attach events
 
-			elements = document.querySelectorAll '[title][data-qtip]'
+			elements = document.querySelectorAll "[title][#{options.dataAttribute}]"
 
 			for element in elements
 
+mobile
+
 				element.addEventListener 'touchstart', show
 				element.addEventListener 'touchend', hide
+
+desktop
 
 				element.addEventListener 'mousedown', show
 				element.addEventListener 'mouseup', hide
@@ -22,14 +31,14 @@ hover event
 create qtip div
 
 			div = document.createElement 'div'
-			div.id = 'qtip'
+			div.id = options.id
 			document.body.appendChild div
 
 ## hide
 
 		hide = (event) ->
 
-			div.classList.remove 'visible'
+			div.classList.remove options.visibleClass
 
 ## show
 
@@ -49,8 +58,8 @@ set the qtip's text
 
 position it
 
-			left = offset.left + (element.offsetWidth - div.offsetWidth)/2
-			top = offset.top + element.offsetHeight
+			left = offset.left + (element.offsetWidth - div.offsetWidth) / 2
+			top = offset.top - div.offsetHeight - 10 # small offset so it's not covered up by the user's finger
 
 			div.style.cssText = """
 				left: #{left}px;
@@ -59,7 +68,7 @@ position it
 
 show it
 
-			div.classList.add 'visible'
+			div.classList.add options.visibleClass
 
 go!
 

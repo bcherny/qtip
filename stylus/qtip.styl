@@ -1,13 +1,17 @@
 
 $arrow = 10px
-$background = rgba(255,255,255,.7)
+$background = #fff
 $color = #000
+$shadow-color = rgba(0,0,0,.1)
+$shadow = 0 1px 1px $shadow-color
 
 #qtip
 	background $background
-	box-shadow 0 1px 1px rgba(0,0,0,.1)
+	box-shadow $shadow
 	color $color
 	display block
+	font-size 18px
+	margin-bottom 15px
 	opacity 0
 	padding 10px 14px
 	position absolute
@@ -20,14 +24,15 @@ $color = #000
 
 	// arrow
 	&:before
-		border $arrow solid transparent
-		border-bottom-color $background
-		content ""
-		margin-top ($arrow/2)
+		color $background
+		text-shadow $shadow
+		content "\25be"
+		font-size $arrow*3
+		line-height 2px
 		margin-left -($arrow)
 		position absolute
 		left 50%
-		bottom 100%
+		top 100%
 
 @-webkit-keyframes Grow
 
