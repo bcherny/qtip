@@ -2,12 +2,20 @@
 
 	qtip = do ->
 
-		div = null
-
 		options =
 			dataAttribute: 'data-qtip'
-			id: 'qtip'
+			id: 'qtip-bubble'
 			visibleClass: 'visible'
+
+create qtip div
+
+		div = document.createElement 'div'
+		div.id = options.id
+		document.body.appendChild div
+
+register that holds elements that we've already initialized
+
+		attached = {}
 
 ## initialize
 
@@ -19,21 +27,21 @@ attach events
 
 			for element in elements
 
+ensure we don't double-attach elements
+
+				if element not of attached
+
+					attached[element] = true
+
 mobile
 
-				element.addEventListener 'touchstart', show
-				element.addEventListener 'touchend', hide
+					element.addEventListener 'touchstart', show
+					element.addEventListener 'touchend', hide
 
 desktop
 
-				element.addEventListener 'mousedown', show
-				element.addEventListener 'mouseup', hide
-
-create qtip div
-
-			div = document.createElement 'div'
-			div.id = options.id
-			document.body.appendChild div
+					element.addEventListener 'mousedown', show
+					element.addEventListener 'mouseup', hide
 
 ## hide
 
@@ -74,3 +82,8 @@ show it
 go!
 
 		initialize()
+
+return
+
+		face =
+			initialize: initialize

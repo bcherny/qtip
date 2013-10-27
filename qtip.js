@@ -12,26 +12,33 @@
 var qtip;
 
 qtip = (function() {
-  var div, hide, initialize, options, show;
-  div = null;
+  var attached, div, face, hide, initialize, options, show;
   options = {
     dataAttribute: 'data-qtip',
-    id: 'qtip',
+    id: 'qtip-bubble',
     visibleClass: 'visible'
   };
+  div = document.createElement('div');
+  div.id = options.id;
+  document.body.appendChild(div);
+  attached = {};
   initialize = function() {
-    var element, elements, _i, _len;
+    var element, elements, _i, _len, _results;
     elements = document.querySelectorAll("[title][" + options.dataAttribute + "]");
+    _results = [];
     for (_i = 0, _len = elements.length; _i < _len; _i++) {
       element = elements[_i];
-      element.addEventListener('touchstart', show);
-      element.addEventListener('touchend', hide);
-      element.addEventListener('mousedown', show);
-      element.addEventListener('mouseup', hide);
+      if (!(element in attached)) {
+        attached[element] = true;
+        element.addEventListener('touchstart', show);
+        element.addEventListener('touchend', hide);
+        element.addEventListener('mousedown', show);
+        _results.push(element.addEventListener('mouseup', hide));
+      } else {
+        _results.push(void 0);
+      }
     }
-    div = document.createElement('div');
-    div.id = options.id;
-    return document.body.appendChild(div);
+    return _results;
   };
   hide = function(event) {
     return div.classList.remove(options.visibleClass);
@@ -47,7 +54,10 @@ qtip = (function() {
     div.style.cssText = "left: " + left + "px;\ntop: " + top + "px;";
     return div.classList.add(options.visibleClass);
   };
-  return initialize();
+  initialize();
+  return face = {
+    initialize: initialize
+  };
 })();
 
     return qtip;
