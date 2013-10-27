@@ -33,6 +33,18 @@ installation is nearly drop-in. just add empty `data-qtip` attributes to any ele
 </html>
 ```
 
+## building it yourself
+
+```bash
+# css
+npm install -g stylus
+stylus stylus --out css
+
+# js
+npm install
+grunt
+```
+
 ## browser api requirements:
 
 - `addEventListener` ([mdn](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener#Browser_compatibility))
