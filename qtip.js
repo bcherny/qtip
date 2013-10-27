@@ -19,23 +19,28 @@ qtip = (function() {
     id: 'qtip',
     visibleClass: 'visible'
   };
-  filter = function(event) {
-    var data, element, title;
-    element = event.target;
+  filter = function(element) {
+    var data, parent, title;
     title = element.hasAttribute('title');
     data = element.hasAttribute(options.dataAttribute);
-    return title && data;
+    parent = element.parentNode;
+    if (title && data) {
+      return element;
+    }
+    if (parent && 'hasAttribute' in parent && 'getBoundingClientRect' in parent) {
+      return filter(parent);
+    }
   };
   hide = function(event) {
-    if (filter(event)) {
+    if (filter(event.target)) {
       return div.classList.remove(options.visibleClass);
     }
   };
   show = function(event) {
     var element, left, offset, top;
-    if (filter(event)) {
+    element = filter(event.target);
+    if (element) {
       event.preventDefault();
-      element = event.target;
       offset = element.getBoundingClientRect();
       div.innerHTML = element.getAttribute('title');
       left = offset.left + (element.offsetWidth - div.offsetWidth) / 2;

@@ -13,19 +13,23 @@
 
 since we're using event delegation, ensure that the event's target should indeed trigger a qtip
 
-		filter = (event) ->
+		filter = (element) ->
 
-			element = event.target
 			title = element.hasAttribute 'title'
 			data = element.hasAttribute options.dataAttribute
+			parent = element.parentNode
 
-			title and data
+			if title and data
+				return element
+
+			if parent and 'hasAttribute' of parent and 'getBoundingClientRect' of parent
+				filter parent
 
 ## hide
 
 		hide = (event) ->
 
-			if filter event
+			if filter event.target
 
 				div.classList.remove options.visibleClass
 
@@ -33,11 +37,11 @@ since we're using event delegation, ensure that the event's target should indeed
 
 		show = (event) ->
 
-			if filter event
+			element = filter event.target
+
+			if element
 
 				event.preventDefault()
-
-				element = event.target
 
 compute the `element`'s position on screen
 
