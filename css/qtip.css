@@ -1,12 +1,12 @@
-#qtip-bubble {
+#qtip {
   display: none;
   margin-bottom: 15px;
   position: absolute;
 }
-#qtip-bubble.visible {
+#qtip.visible {
   display: block;
 }
-#qtip-bubble:before {
+#qtip:before {
   content: "\25be";
   font-size: 30px;
   line-height: 2px;
@@ -15,7 +15,7 @@
   left: 50%;
   top: 100%;
 }
-#qtip-bubble {
+#qtip {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   color: #000;
@@ -26,11 +26,11 @@
   -webkit-transition: 0.2s linear;
   -webkit-transition-property: opacity, -webkit-transform;
 }
-#qtip-bubble.visible {
+#qtip.visible {
   opacity: 1;
   -webkit-animation: Grow 0.3s;
 }
-#qtip-bubble:before {
+#qtip:before {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }

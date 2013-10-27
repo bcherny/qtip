@@ -7,7 +7,7 @@
     div = null;
     options = {
       dataAttribute: 'data-qtip',
-      id: 'qtip-bubble',
+      id: 'qtip',
       visibleClass: 'visible'
     };
     filter = function(event) {

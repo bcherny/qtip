@@ -6,7 +6,7 @@
 
 		options =
 			dataAttribute: 'data-qtip'
-			id: 'qtip-bubble'
+			id: 'qtip'
 			visibleClass: 'visible'
 
 ## filter
